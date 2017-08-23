@@ -79,6 +79,7 @@ def writeToLogPage(url, editSession, pageName, logValue):
     print(logSession.json())
 
 
+
 lifeToDos = getPage(api_url, life_todo_page, contentsOnly= 'Y')
 
 '''
@@ -104,6 +105,24 @@ def logHeartRate(ibi_avg, bpm_avg):
     log = '*' + eventType[1] + ', ' + str(bpm_avg) + ', ' + timeNow + ', ' + dateNow +  ',\n' #TODO: Log Stdev of IBI and BPM
 
     writeToLogPage(api_url, editSession, heartRateLog_page, log)
+
+
+def getLogContents(logFileName, clearAfter=False):
+    logContents = getPage(api_url, logFileName, contentsOnly=True)
+
+    if clearAfter:
+        clearSession = session.post(api_url, data={
+            'format': 'json',
+            'action': 'edit',
+            'assert': 'user',
+            'text': '',
+            # 'summary': summary,
+            'title': logFileName,
+            'token': editSession.json()['query']['tokens']['csrftoken'],
+        })
+
+    return logContents
+
 
 
 
