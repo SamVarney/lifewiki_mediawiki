@@ -11,7 +11,7 @@ heartPort = serial.Serial("/dev/cu.usbmodem1411", 115200)
 
 while(heartPort.is_open):
     time_start = time.time()
-    while (time.time() - time_start <= 10):
+    while (time.time() - time_start <= 60):
         data = heartPort.readline()
         data = data.strip().decode("utf-8")
         if data == 'BEAT':
