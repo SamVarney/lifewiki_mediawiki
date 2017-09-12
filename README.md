@@ -1,1 +1,1 @@
-# lifewiki
+# lifewiki_mediawiki
