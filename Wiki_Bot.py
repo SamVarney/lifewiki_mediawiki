@@ -80,7 +80,7 @@ def writeToLogPage(url, editSession, pageName, logValue):
 
 
 
-lifeToDos = getPage(api_url, life_todo_page, contentsOnly= 'Y')
+
 
 '''
 # save the edit
@@ -124,6 +124,7 @@ def getLogContents(logFileName, clearAfter=False):
     return logContents
 
 
+lifeToDos = getPage(api_url, life_todo_page, contentsOnly='Y')
 
 
 parsedTodos = bs4.BeautifulSoup(lifeToDos, 'lxml')
